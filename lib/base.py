@@ -1,8 +1,9 @@
 #coding: utf-8
 __author__ = 'liufei'
 
-import sys, random
-import requests
+import sys, random, requests
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+import BaseHTTPServer
 from conf.conf import conf
 from data.data import data
 
@@ -56,6 +57,16 @@ class base:
                     ff.write(r+"\r\n")
         except Exception as e:
             assert False, "写入失败: " + str(e)
+
+    @classmethod
+    def httpService(cls, HandlerClass = SimpleHTTPRequestHandler, ServerClass = BaseHTTPServer.HTTPServer):
+        port = 8083
+        server_address = ('', port)
+        try:
+            httpd = ServerClass(server_address, HandlerClass)
+            httpd.serve_forever()
+        except Exception, e:
+            print e
 
 if __name__ == "__main__":
     print base.verify_proxy("113.18.193.10", "80")

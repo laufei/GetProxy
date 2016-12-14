@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/workspace.xml
+conf/__init__.pyc
+conf/conf.pyc
+data/__init__.pyc
+data/data.pyc
+lib/__init__.pyc
+lib/base.pyc
+proxier/__init__.pyc
+proxier/kuaidaili.pyc
+proxier/xicidaili.pyc
+proxier/youdaili.pyc

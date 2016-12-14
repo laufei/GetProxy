@@ -1,14 +1,14 @@
 #coding: utf-8
 __author__ = 'liufei'
 
-import sys, time
+import sys, time, threading
 from bs4 import BeautifulSoup as BS
 from data.data import data
 from lib.base import base
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-class youdaili(base):
+class youdaili:
     def __init__(self):
         self.data = data()
         self.base = base()
@@ -60,9 +60,22 @@ class youdaili(base):
         base.sava_result(filename, result, mode)
         print time.ctime() + " | 有代理  -   Proxy count is %d!" % len(result)
 
+    def run(self, filename, updateGap):
+        while True:
+            self.save(filename, "w")
+            time.sleep(updateGap)
+
+
 if __name__ == "__main__":
-    filename = "/Users/luca/WebServer/Documents/youdaili.txt"
-    while True:
-        ydl = youdaili()
-        ydl.save(filename)
-        time.sleep(180)
+    ydl = youdaili()
+    threads = []
+    threads.append(threading.Thread(target=ydl.run, args=("youdaili.txt", 300)))
+    threads.append(threading.Thread(target=base.httpService))
+    for t in threads:
+        t.setDaemon(True) #设置线程为后台线程
+        t.start()
+    for t in threads:
+        t.join()
+
+    # 访问抓取的代理地址, 例: http://127.0.0.1:8083/youdaili.txt
+

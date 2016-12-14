@@ -1,14 +1,15 @@
 #coding: utf-8
 __author__ = 'liufei'
 
-import sys, time
+import sys, threading
+import time
 from bs4 import BeautifulSoup as BS
 from data.data import data
 from lib.base import base
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-class kuaidaili(base):
+class kuaidaili:
     def __init__(self):
         self.data = data()
         self.base = base()
@@ -54,10 +55,20 @@ class kuaidaili(base):
         base.sava_result(filename, result, mode)
         print time.strftime("%Y-%m-%d %X", time.localtime()) + " | [快代理] - Proxy count is %d!" % len(result)
 
-if __name__ == "__main__":
-    filename = "/Users/luca/WebServer/Documents/kuaidaili.txt"
-    while True:
-        kdl = kuaidaili()
-        kdl.save(filename)
-        time.sleep(180)
+    def run(self, filename, updateGap):
+        while True:
+            self.save(filename, "w")
+            time.sleep(updateGap)
 
+if __name__ == "__main__":
+    kdl = kuaidaili()
+    threads = []
+    threads.append(threading.Thread(target=kdl.run, args=("kuaidaili.txt", 300)))
+    threads.append(threading.Thread(target=base.httpService))
+    for t in threads:
+        t.setDaemon(True) #设置线程为后台线程
+        t.start()
+    for t in threads:
+        t.join()
+
+    # 访问抓取的代理地址,例: http://127.0.0.1:8083/kuaidaili.txt
