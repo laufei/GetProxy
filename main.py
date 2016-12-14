@@ -11,7 +11,7 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 class spider:
     def __init__(self, iptype):
-        self.iptype = iptype
+        self.iptype = iptype # 0: 抓取快代理&西刺的高匿代理         # 1: 抓取有代理的所有免费代理       # other: 抓取快代理&西刺&有代理的所有免费代理
         self.ydl = youdaili()
         self.kdl = kuaidaili()
         self.xcdl = xicidaili()
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     threads.append(threading.Thread(target=sp.run, args=("proxies.txt", 300)))
     threads.append(threading.Thread(target=base.httpService))
     for t in threads:
-        t.setDaemon(True) #设置线程为后台线程
+        t.setDaemon(True)
         t.start()
     for t in threads:
         t.join()
