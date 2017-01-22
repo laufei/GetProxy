@@ -8,6 +8,8 @@ class data:
         self.youdaili_newItem = 3       #网站首页中, 获取最新代理URL数量
         self.kuaidaili = "http://www.kuaidaili.com/proxylist/%d"
         self.kuaidaili_pagescount = 10       #网站首页中, 遍历页面数量
+        self.swei360 = "http://www.swei360.com/?page=%d"
+        self.swei360_pagescount = 10       #网站首页中, 遍历页面数量
         self.xicidaili = "http://www.xicidaili.com/nn/%d"
         self.xicidail_pagescount = 1       #网站首页中, 遍历页面数量
 

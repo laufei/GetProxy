@@ -15,10 +15,10 @@ class base:
     test_url = data().test_url
     ua = random.choice(conf.USER_AGENTS_WEB)
     headers = {"User-Agent": ua,
-                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                    'Accept-Language': 'en-US,en;q=0.5',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
                     'Connection': 'keep-alive',
-                    'Accept-Encoding': 'gzip, deflate',
+                    'Accept-Encoding': 'gzip, deflate, sdch',
                }
 
     @classmethod

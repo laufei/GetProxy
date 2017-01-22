@@ -4,6 +4,7 @@ __author__ = 'liufei'
 import sys, time, threading
 from proxier.youdaili import youdaili
 from proxier.kuaidaili import kuaidaili
+from proxier.swei360 import swei360
 from proxier.xicidaili import xicidaili
 from lib.base import base
 
@@ -14,19 +15,20 @@ class spider:
         self.iptype = iptype # 0: 抓取快代理&西刺的高匿代理         # 1: 抓取有代理的所有免费代理       # other: 抓取快代理&西刺&有代理的所有免费代理
         self.ydl = youdaili()
         self.kdl = kuaidaili()
+        self.sw360 = swei360()
         self.xcdl = xicidaili()
 
     def run(self, filename, updateGap):
         while True:
-            if self.iptype == 0:    # 抓取快代理&西刺的高匿代理
-                self.kdl.save(filename, "w")
+            if self.iptype == 0:    # 抓取360三维代理&西刺的高匿代理
+                self.sw360.save(filename, "w")
                 self.xcdl.save(filename, "a")
             elif self.iptype == 1:  # 抓取有代理的所有免费代理
                 self.ydl.save(filename, "w")
-            else:       # 抓取快代理&西刺&有代理的所有免费代理
+            else:       # 抓取360三维代理&西刺&有代理的所有免费代理
                 self.ydl.save(filename, "w")
                 self.xcdl.save(filename, "a")
-                self.kdl.save(filename, "a")
+                self.sw360.save(filename, "a")
             time.sleep(updateGap)
 
 if __name__ == "__main__":
