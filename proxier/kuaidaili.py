@@ -47,11 +47,11 @@ class kuaidaili:
         latestUrls = self.getLatestFreeURL()
         result = []
         for url in latestUrls:
-                proxies = self.getProxies(url)
-                if proxies:
-                    result += proxies
-                else:
-                    break
+            proxies = self.getProxies(url)
+        if proxies:
+            result += proxies
+        else:
+            return
         base.sava_result(filename, result, mode)
         print time.strftime("%Y-%m-%d %X", time.localtime()) + " | [快代理] - Proxy count is %d!" % len(result)
 
