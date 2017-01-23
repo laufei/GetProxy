@@ -41,7 +41,7 @@ class swei360:
         proxy = zip(ip, port, level, type)
         for p in proxy:
             # if "高匿" in p[2] and "HTTPS" in p[3]:
-            if u"\xb8\xdf\xc4\xe4" in p[2]:
+            # if u"\xb8\xdf\xc4\xe4" in p[2]:
                 proxies.append(p[0].strip() + ":" + p[1].strip())
         return proxies
 
