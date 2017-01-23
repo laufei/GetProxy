@@ -58,7 +58,7 @@ class youdaili:
                 else:
                     break
         base.sava_result(filename, result, mode)
-        print time.ctime() + " | 有代理  -   Proxy count is %d!" % len(result)
+        print time.strftime("%Y-%m-%d %X", time.localtime()) + " | [有代理] - Proxy count is %d!" % len(result)
 
     def run(self, filename, updateGap):
         while True:
