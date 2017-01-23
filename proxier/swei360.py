@@ -50,10 +50,8 @@ class swei360:
         result = []
         for url in latestUrls:
             proxies = self.getProxies(url)
-        if proxies:
-            result += proxies
-        else:
-            return
+            if proxies:
+                result += proxies
         base.sava_result(filename, result, mode)
         print time.strftime("%Y-%m-%d %X", time.localtime()) + " | [360代理] - Proxy count is %d!" % len(result)
 

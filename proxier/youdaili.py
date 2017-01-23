@@ -55,8 +55,6 @@ class youdaili:
                 if proxies:
                     result += proxies
                     i += 1
-                else:
-                    break
         base.sava_result(filename, result, mode)
         print time.strftime("%Y-%m-%d %X", time.localtime()) + " | [有代理] - Proxy count is %d!" % len(result)
 
