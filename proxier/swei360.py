@@ -30,7 +30,7 @@ class swei360:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html)
+        bs = BS(html, "lxml")
         proxiesElement = bs.findAll("td")
         ip, port, level, type, proxies = [], [], [], [], []
         for i in range(10):

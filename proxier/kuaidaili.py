@@ -30,7 +30,8 @@ class kuaidaili:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html, from_encoding="utf8")
+        print html
+        bs = BS(html, "lxml")
         ip = bs.findAll(name="td", attrs={"data-title": "IP"})
         port = bs.findAll(name="td", attrs={"data-title": "PORT"})
         level = bs.findAll(name="td", attrs={"data-title": "匿名度"})

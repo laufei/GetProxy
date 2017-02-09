@@ -29,7 +29,7 @@ class xicidaili:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html, from_encoding="utf8")
+        bs = BS(html, "lxml")
         bs = bs.findAll("tr")[1:]
         proxies = []
         for td in bs:
