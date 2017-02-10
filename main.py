@@ -21,8 +21,8 @@ class spider:
     def run(self, filename, updateGap):
         while True:
             if self.iptype == 0:    # 抓取360三维代理&西刺的高匿代理
-                self.sw360.save(filename, "w")
-                self.xcdl.save(filename, "a")
+                self.xcdl.save(filename, "w")
+                self.sw360.save(filename, "a")
             elif self.iptype == 1:  # 抓取有代理的所有免费代理
                 self.ydl.save(filename, "w")
             else:       # 抓取360三维代理&西刺&有代理的所有免费代理

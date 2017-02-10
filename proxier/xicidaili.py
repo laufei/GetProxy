@@ -29,7 +29,7 @@ class xicidaili:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html, "lxml")
+        bs = BS(html)
         bs = bs.findAll("tr")[1:]
         proxies = []
         for td in bs:
@@ -44,7 +44,10 @@ class xicidaili:
         latestUrls = self.getLatestFreeURL()
         result = []
         for url in latestUrls:
-            proxies = self.getProxies(url)
+            try:
+                proxies = self.getProxies(url)
+            except:
+                return
             if proxies:
                 result += proxies
         base.sava_result(filename, result, mode)

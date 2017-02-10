@@ -32,7 +32,7 @@ class youdaili:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html, "lxml")
+        bs = BS(html)
         proxyModels = bs.select("div.content p span")
         proxies = []
         for p in proxyModels:
@@ -51,7 +51,10 @@ class youdaili:
                     url = pageUrl + ".html"
                 else:
                     url = pageUrl + "_%d.html" % i
-                proxies = self.getProxies(url)
+                try:
+                    proxies = self.getProxies(url)
+                except:
+                    return
                 if proxies:
                     result += proxies
                     i += 1

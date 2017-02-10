@@ -31,7 +31,7 @@ class kuaidaili:
         '''
         html = self.base.request_url(url)
         print html
-        bs = BS(html, "lxml")
+        bs = BS(html)
         ip = bs.findAll(name="td", attrs={"data-title": "IP"})
         port = bs.findAll(name="td", attrs={"data-title": "PORT"})
         level = bs.findAll(name="td", attrs={"data-title": "匿名度"})
@@ -48,7 +48,10 @@ class kuaidaili:
         latestUrls = self.getLatestFreeURL()
         result = []
         for url in latestUrls:
-            proxies = self.getProxies(url)
+            try:
+                proxies = self.getProxies(url)
+            except:
+                return
             if proxies:
                 result += proxies
         base.sava_result(filename, result, mode)

@@ -30,7 +30,7 @@ class swei360:
                 # 获取目标页面中免费代理
         '''
         html = self.base.request_url(url)
-        bs = BS(html, "lxml")
+        bs = BS(html)
         proxiesElement = bs.findAll("td")
         ip, port, level, type, proxies = [], [], [], [], []
         for i in range(10):
@@ -46,7 +46,10 @@ class swei360:
         return proxies
 
     def save(self, filename, mode):
-        latestUrls = self.getLatestFreeURL()
+        try:
+            latestUrls = self.getLatestFreeURL()
+        except:
+            return
         result = []
         for url in latestUrls:
             proxies = self.getProxies(url)
