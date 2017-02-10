@@ -52,7 +52,10 @@ class swei360:
             pass
         result = []
         for url in latestUrls:
-            proxies = self.getProxies(url)
+            try:
+                proxies = self.getProxies(url)
+            except:
+                pass
             if proxies:
                 result += proxies
         base.sava_result(filename, result, mode)
