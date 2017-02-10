@@ -51,7 +51,7 @@ class kuaidaili:
             try:
                 proxies = self.getProxies(url)
             except:
-                return
+                pass
             if proxies:
                 result += proxies
         base.sava_result(filename, result, mode)

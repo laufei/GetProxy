@@ -54,7 +54,7 @@ class youdaili:
                 try:
                     proxies = self.getProxies(url)
                 except:
-                    return
+                    pass
                 if proxies:
                     result += proxies
                     i += 1
