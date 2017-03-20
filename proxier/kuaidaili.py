@@ -46,7 +46,7 @@ class kuaidaili:
 
     def save(self, filename, mode):
         latestUrls = self.getLatestFreeURL()
-        result = []
+        proxies, result = [], []
         for url in latestUrls:
             try:
                 proxies = self.getProxies(url)

@@ -50,7 +50,7 @@ class swei360:
             latestUrls = self.getLatestFreeURL()
         except:
             pass
-        result = []
+        proxies, result = [], []
         for url in latestUrls:
             try:
                 proxies = self.getProxies(url)

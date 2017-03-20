@@ -42,7 +42,7 @@ class youdaili:
 
     def save(self, filename, mode):
         latestUrls = self.getLatestFreeURL(self.data.youdaili)
-        result = []
+        proxies, result = [], []
         for url in latestUrls:
             pageUrl = url[:-5]
             i = 1
